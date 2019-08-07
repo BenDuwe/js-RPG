@@ -33,4 +33,57 @@
   width: 40%;
 }
 
+.race_selector input {
+  margin: 0;
+  padding: 0;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+.race_selector input:active + .raceSelect {
+  opacity: 0.9;
+}
+.race_selector input:checked + .raceSelect {
+  -webkit-filter: none;
+  -moz-filter: none;
+  filter: none;
+}
+
+.raceSelect {
+  cursor: pointer;
+  background-size: contain;
+  background-repeat: no-repeat;
+  display: inline-block;
+  width: 60px;
+  height: 70px;
+  -webkit-transition: all 100ms ease-in;
+  -moz-transition: all 100ms ease-in;
+  transition: all 100ms ease-in;
+  -webkit-filter: brightness(1.4) grayscale(0.5) opacity(0.8);
+  -moz-filter: brightness(1.4) grayscale(0.5) opacity(0.8);
+  filter: brightness(1.4) grayscale(0.5) opacity(0.8);
+}
+
+.raceSelect:hover {
+  -webkit-filter: brightness(1.2) grayscale(0.2) opacity(0.9);
+  -moz-filter: brightness(1.2) grayscale(0.2) opacity(0.9);
+  filter: brightness(1.2) grayscale(0.2) opacity(0.9);
+}
+
+.selectHuman {
+  background-image: url(/assets/Human_small.gif);
+}
+
+.selectOrc {
+  background-image: url(/assets/Orc_small.gif);
+}
+
+.selectElf {
+  background-image: url(/assets/Elf_small.gif);
+}
+
+.selectVampire {
+  background-image: url(/assets/Vampire_small.gif);
+}
+
 /*# sourceMappingURL=main.css.map */
