@@ -15,7 +15,7 @@
 
     <div id="VS" class="VS">
         <div class="p1Side">
-            <div>
+            <div id="p1Info" class="hidden">
                 <div class="characterImg">
                     <img src="assets/Human.gif" alt="Player1">
                 </div>
@@ -43,15 +43,15 @@
                                 <option class="itemP1choice" value="Bow">Bow</option>
                             </select>
                         </div>
-                        <div class="race_selector"><div class="raceLabel">Choose your race:</div>
-                            <input type="radio" id="humanP1" name="raceP1" value="Human" required/>
-                            <label for="humanP1" class="raceSelect selectHuman"></label>
-                            <input type="radio" id="orcP1" name="raceP1" value="Orc"/>
-                            <label for="orcP1" class="raceSelect selectOrc"></label>
-                            <input type="radio" id="elfP1" name="raceP1" value="Elf"/>
-                            <label for="elfP1" class="raceSelect selectElf"></label>
-                            <input type="radio" id="vampireP1" name="raceP1" value="Vampire"/>
-                            <label for="vampireP1" class="raceSelect selectVampire"></label>
+                        <div id="raceP1" class="race_selector"><div class="raceLabel">Choose your race:</div>
+                            <input type="radio" id="humanP1" name="P1race" value="Human" required/>
+                            <label for="humanP1" class="raceSelect selectHuman rP1"></label>
+                            <input type="radio" id="orcP1" name="P1race" value="Orc"/>
+                            <label for="orcP1" class="raceSelect selectOrc rP1"></label>
+                            <input type="radio" id="elfP1" name="P1race" value="Elf"/>
+                            <label for="elfP1" class="raceSelect selectElf rP1"></label>
+                            <input type="radio" id="vampireP1" name="P1race" value="Vampire"/>
+                            <label for="vampireP1" class="raceSelect selectVampire  rP1"></label>
                         </div>
 
                         <div>
@@ -63,7 +63,7 @@
         </div>
         <H2 class="versus">VS</H2>
         <div class="p2Side">
-            <div >
+            <div id="p2Info" class="hidden">
                 <div class="characterImg">
                     <img src="assets/Vampire-male.gif" alt="Player2">
                 </div>
@@ -91,15 +91,15 @@
                                 <option class="itemP2choice" value="Bow">Bow</option>
                             </select>
                         </div>
-                        <div class="race_selector"><div class="raceLabel">Choose your race:</div>
-                            <input type="radio" id="humanP2" name="raceP2" value="Human" required/>
-                            <label for="humanP2" class="raceSelect selectHuman"></label>
-                            <input type="radio" id="orcP2" name="raceP2" value="Orc"/>
-                            <label for="orcP2" class="raceSelect selectOrc"></label>
-                            <input type="radio" id="elfP2" name="raceP2" value="Elf"/>
-                            <label for="elfP2" class="raceSelect selectElf"></label>
-                            <input type="radio" id="vampireP2" name="raceP2" value="Vampire"/>
-                            <label for="vampireP2" class="raceSelect selectVampire"></label>
+                        <div id="raceP2" class="race_selector"><div class="raceLabel">Choose your race:</div>
+                            <input type="radio" id="humanP2" name="P2race" value="Human" required/>
+                            <label for="humanP2" class="raceSelect selectHuman rP2"></label>
+                            <input type="radio" id="orcP2" name="P2race" value="Orc"/>
+                            <label for="orcP2" class="raceSelect selectOrc  rP2"></label>
+                            <input type="radio" id="elfP2" name="P2race" value="Elf"/>
+                            <label for="elfP2" class="raceSelect selectElf  rP2"></label>
+                            <input type="radio" id="vampireP2" name="P2race" value="Vampire"/>
+                            <label for="vampireP2" class="raceSelect selectVampire  rP2"></label>
                         </div>
                         <div>
                             <button id="p2create" type="submit">Create</button>
@@ -110,7 +110,7 @@
         </div>
     </div>
 
-    <div class="actionBtns">
+    <div id="actionBtns" class="hidden">
         <div class="p1btns">
             <button id="p1Att">Attack</button>
             <button id="p1Heal">Heal</button>
@@ -122,7 +122,7 @@
             <button id="p2Yield">Yield</button>
         </div>
     </div>
-    <div id="log">This will be the battlelog</div>
+    <div id="battlelog" class="hidden">This will be the battlelog</div>
 
     <script type="module" src="scripts/testscript.js"></script>
 </body>

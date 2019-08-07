@@ -3,6 +3,16 @@
     margin: 0;
 }
 
+body {
+    height: 100vh;
+    background: url(/assets/bg.png);
+    background-size: cover;
+}
+
+.hidden {
+    display: none;
+}
+
 
 .VS {
     display: flex;
@@ -48,6 +58,8 @@
             -webkit-filter: none;
             -moz-filter: none;
             filter: none;
+            background-color: rgba(255, 0, 0, 0.247);
+            border-radius: 25%;
         }
     }
 }
@@ -69,6 +81,8 @@
     -webkit-filter: brightness(1.2) grayscale(.2) opacity(.9);
        -moz-filter: brightness(1.2) grayscale(.2) opacity(.9);
             filter: brightness(1.2) grayscale(.2) opacity(.9);
+            background-color: rgba(255, 0, 0, 0.247);
+            border-radius: 25%;
 }
 
 .selectHuman{

@@ -1,5 +1,6 @@
 //Use this script to generate your character
-export default function Person(race,item){
+export default function Person(name,race,item){
+    this.name = name;
     this.race = race;
     this.item = item;
     this.currenthealth = 100;
