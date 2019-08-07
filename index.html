@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="assets/icons8-battle-24.png" type="image/x-icon">
+    <link rel="stylesheet" href="css/main.css">
+    <title>JS-RPG</title>
+</head>
+
+<body>
+    <div></div>
+    <h1>Game</h1>
+
+    <div id="VS" class="VS">
+        <div class="p1Side">
+            <div>
+                <div class="characterImg">
+                    <img src="assets/Human_knight(shovel).gif" alt="Player1">
+                </div>
+                <ul id="p1stats">
+                    <li id="p1Name">Nick</li>
+                    <li id="p1Health"><span id="p1CurHP">100</span><span id="p1MaxHP">/100 HP</span></li>
+                    <li id="p1Item">Shovel</li>
+                </ul>
+            </div>
+            <div>
+                <form id="p1Sheet" action="#"  method="GET">
+                    <fieldset>
+                        <legend>Player1 creation</legend>
+                        <div>
+                            <label for="nameP1">Name:</label>
+                            <input type="text" id="nameP1" name="name_player_1" required />
+                        </div>
+                        <div>
+                            <label for="itemP1">Item:</label>
+                            <select name="item_player_1" id="itemP1" aria-placeholder="Choose an item" required>
+                                <option class="itemP1choice" value="" selected disabled hidden>Choose here</option>
+                                <option class="itemP1choice" value="Boots">Boots</option>
+                                <option class="itemP1choice" value="Staff">Staff</option>
+                                <option class="itemP1choice" value="Sword">Sword</option>
+                                <option class="itemP1choice" value="Bow">Bow</option>
+                            </select>
+                        </div>
+                        <!-- <div>
+                            <label for="raceP1">Race:</label>
+                            <input type="image" id="humanP1" name="raceP1" src="assets/Human_small.gif"
+                                value="Human" />Human
+                            <input type="image" id="orcP1" name="raceP1" src="assets/Orc_small.gif" value="Orc" />Orc
+                            <input type="image" id="elfP1" name="raceP1" src="assets/Elf_small.gif" value="Elf" />Elf
+                            <input type="image" id="vampireP1" name="raceP1" src="assets/Vampire-small.gif"
+                                value="Vampire" />Vampire
+                        </div> -->
+                        <div>
+                            <label for="humanP1">Race:</label>
+                            <input type="radio" id="humanP1" name="raceP1" src="assets/Human_small_text.gif"
+                                value="Human" />Human
+                            <input type="radio" id="orcP1" name="raceP1" src="assets/Orc_small.gif" value="Orc" />Orc
+                            <input type="radio" id="elfP1" name="raceP1" src="assets/Elf_small.gif" value="Elf" />Elf
+                            <input type="radio" id="vampireP1" name="raceP1" src="assets/Vampire-small.gif"
+                                value="Vampire" />Vampire
+                        </div>
+
+                        <div>
+                            <button id="p1create" type="submit">Create</button>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+        <H2 class="versus">VS</H2>
+        <div class="p2Side">
+            <div >
+                <div class="characterImg">
+                    <img src="assets/Elf_male.gif" alt="Player2">
+                </div>
+                <ul id="p2stats">
+                    <li id="p2Name">Selene</li>
+                    <li id="p2Health"><span id="p1CurHP">80</span><span id="p1MaxHP">/80 HP</span></li>
+                    <li id="p2Item">Boots</li>
+                </ul>
+            </div>
+            <div>
+                <form id="p2Sheet" onsubmit="createP2()" method="GET">
+                    <fieldset>
+                        <legend>Player2 creation</legend>
+                        <div>
+                            <label for="nameP2">Name:</label>
+                            <input type="text" id="nameP2" name="name_player_2" required />
+                        </div>
+                        <div>
+                            <label for="itemP2">Item:</label>
+                            <select name="item_player_2" id="itemP2" aria-placeholder="Choose an item" required>
+                                <option class="itemP2choice" value="" selected disabled hidden>Choose here</option>
+                                <option class="itemP2choice" value="Staff">Staff</option>
+                                <option class="itemP2choice" value="Boots">Boots</option>
+                                <option class="itemP2choice" value="Sword">Sword</option>
+                                <option class="itemP2choice" value="Bow">Bow</option>
+                            </select>
+                        </div>
+                        <!-- <div>
+                            <label for="raceP2">Race:</label>
+                            <input type="image" id="humanP2" name="raceP2" src="assets/Human_small_text.gif" value="Human"
+                                alt="Submit Human" />Human
+                            <input type="image" id="orcP2" name="raceP2" src="assets/Orc_small.gif" value="Orc"
+                                alt="Submit Orc" />Orc
+                            <input type="image" id="elfP2" name="raceP2" src="assets/Elf_small.gif" value="Elf"
+                                alt="Submit Elf" />Elf
+                            <input type="image" id="vampireP2" name="raceP2" src="assets/Vampire-m-small.gif"
+                                value="Vampire" alt="Submit Vampire" />Vampire
+                        </div> -->
+                        <div>
+                            <label for="raceP2">Race:</label>
+                            <input type="radio" id="humanP2" name="raceP2" src="assets/Human_small_text.gif" value="Human"
+                                alt="Submit Human" />Human
+                            <input type="radio" id="orcP2" name="raceP2" src="assets/Orc_small.gif" value="Orc"
+                                alt="Submit Orc" />Orc
+                            <input type="radio" id="elfP2" name="raceP2" src="assets/Elf_small.gif" value="Elf"
+                                alt="Submit Elf" />Elf
+                            <input type="radio" id="vampireP2" name="raceP2" src="assets/Vampire-m-small.gif"
+                                value="Vampire" alt="Submit Vampire" />Vampire
+                        </div>
+                        <div>
+                            <button id="p2create" type="submit">Create</button>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="actionBtns">
+        <div class="p1btns">
+            <button id="p1Att">Attack</button>
+            <button id="p1Heal">Heal</button>
+            <button id="p1Yield">Yield</button>
+        </div>
+        <div class="p2btns">
+            <button id="p2Att">Attack</button>
+            <button id="p2Heal">Heal</button>
+            <button id="p2Yield">Yield</button>
+        </div>
+    </div>
+    <div id="log">This will be the battlelog</div>
+
+    <script type="module" src="scripts/testscript.js"></script>
+</body>
+
+</html>
