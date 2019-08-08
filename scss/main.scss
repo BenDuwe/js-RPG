@@ -1,6 +1,7 @@
 * {
     padding: 0;
     margin: 0;
+    box-sizing: border-box;
 }
 
 body {
@@ -8,6 +9,8 @@ body {
     width: 100vw;
     background: url(/assets/bg.png);
     background-size: cover;
+    background-repeat: no-repeat;
+    background-color: #456a2b;
 }
 
 .hidden {
@@ -29,9 +32,23 @@ body {
         width: 42,5%;
     }
     .characterImg {
-        height: 235px;
+        display: flex;
+        flex-direction: column;
     }
 }
+
+progress[value] {
+    /* Reset the default appearance */
+    -webkit-appearance: none;
+     appearance: none;
+    &::-webkit-progress-bar {
+    background-color: #eee;
+    border: 1px solid #000;
+    border-radius: 2px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+    }
+}
+
 
 .actionBtns {
     display: flex;
@@ -47,11 +64,13 @@ body {
 .battlelog {
     position: fixed;
     bottom: 0%;
-    height: 15%;
-    width: 99.6%;
+    left: 25vw;
+    height: 8vw;
+    width: 50vw;
     overflow: auto;
     border: 2px solid rgb(102, 34, 34);
     background-color: rgba(223, 223, 130, 0.562);
+    padding: 10px;
 }
 
 

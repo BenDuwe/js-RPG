@@ -1,8 +1,10 @@
 //Use this script to generate your character
-export default function Person(name,race,item){
+export default function Person(name, race, item, quirck, skill){
     this.name = name;
     this.race = race;
+    this.quirck = quirck;
     this.item = item;
+    this.skill = skill;
     this.currenthealth = 100;
     this.maxHealth = 100;
     
