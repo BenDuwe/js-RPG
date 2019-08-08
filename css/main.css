@@ -7,7 +7,7 @@
 body {
   height: 100vh;
   width: 100vw;
-  background: url(https://github.com/BenDuwe/js-RPG/blob/master/assets/bg.png);
+  background: url(/assets/bg.png);
   background-size: cover;
   background-repeat: no-repeat;
   background-color: #456a2b;
@@ -114,19 +114,19 @@ progress[value]::-webkit-progress-bar {
 }
 
 .selectHuman {
-  background-image: url(assets/Human_small.gif);
+  background-image: url(/assets/Human_small.gif);
 }
 
 .selectOrc {
-  background-image: url(assets/Orc_small.gif);
+  background-image: url(/assets/Orc_small.gif);
 }
 
 .selectElf {
-  background-image: url(https://github.com/BenDuwe/js-RPG/blob/master/assets/Elf_small.gif);
+  background-image: url(/assets/Elf_small.gif);
 }
 
 .selectVampire {
-  background-image: url(assets/Vampire_small.gif);
+  background-image: url(/assets/Vampire_small.gif);
 }
 
 /*# sourceMappingURL=main.css.map */
