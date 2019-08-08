@@ -16,10 +16,10 @@ export default function Person(name,race,item){
 
     this.totalDamage = this.damage();
 
-    displayChar(this.race,this.item,this.maxHealth);
+    displayChar(this.name,this.race,this.item,this.maxHealth);
 }
 
 //Delete this functiom
-function displayChar(race,item,maxHealth){
-    return console.log(`I am a ${race}, I wield a ${item}, my total health point are ${maxHealth}`);
+function displayChar(name,race,item,maxHealth){
+    return console.log(`Hello, my name is ${name}. I am a ${race}, I wield a ${item}, my total health point are ${maxHealth}`);
 }

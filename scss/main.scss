@@ -5,6 +5,7 @@
 
 body {
     height: 100vh;
+    width: 100vw;
     background: url(/assets/bg.png);
     background-size: cover;
 }
@@ -43,7 +44,18 @@ body {
         width: 40%;
     }
 }
+.battlelog {
+    position: fixed;
+    bottom: 0%;
+    height: 15%;
+    width: 99.6%;
+    overflow: auto;
+    border: 2px solid rgb(102, 34, 34);
+    background-color: rgba(223, 223, 130, 0.562);
+}
 
+
+//Custom radio images:
 .race_selector{
     input {
         margin: 0;
@@ -73,9 +85,9 @@ body {
     -webkit-transition: all 100ms ease-in;
        -moz-transition: all 100ms ease-in;
             transition: all 100ms ease-in;
-    -webkit-filter: brightness(1.4) grayscale(.5) opacity(.8);
-       -moz-filter: brightness(1.4) grayscale(.5) opacity(.8);
-            filter: brightness(1.4) grayscale(.5) opacity(.8);
+    -webkit-filter: brightness(1.1) grayscale(.9) opacity(.8);
+       -moz-filter: brightness(1.1) grayscale(.9) opacity(.8);
+            filter: brightness(1.1) grayscale(.9) opacity(.8);
 }
 .raceSelect:hover{
     -webkit-filter: brightness(1.2) grayscale(.2) opacity(.9);
@@ -97,3 +109,4 @@ body {
 .selectVampire {
     background-image: url(/assets/Vampire_small.gif);
 }
+// ENd of custom radio images.

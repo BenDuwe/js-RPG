@@ -5,6 +5,7 @@
 
 body {
   height: 100vh;
+  width: 100vw;
   background: url(/assets/bg.png);
   background-size: cover;
 }
@@ -43,6 +44,16 @@ body {
   width: 40%;
 }
 
+.battlelog {
+  position: fixed;
+  bottom: 0%;
+  height: 15%;
+  width: 99.6%;
+  overflow: auto;
+  border: 2px solid #662222;
+  background-color: rgba(223, 223, 130, 0.562);
+}
+
 .race_selector input {
   margin: 0;
   padding: 0;
@@ -71,9 +82,9 @@ body {
   -webkit-transition: all 100ms ease-in;
   -moz-transition: all 100ms ease-in;
   transition: all 100ms ease-in;
-  -webkit-filter: brightness(1.4) grayscale(0.5) opacity(0.8);
-  -moz-filter: brightness(1.4) grayscale(0.5) opacity(0.8);
-  filter: brightness(1.4) grayscale(0.5) opacity(0.8);
+  -webkit-filter: brightness(1.1) grayscale(0.9) opacity(0.8);
+  -moz-filter: brightness(1.1) grayscale(0.9) opacity(0.8);
+  filter: brightness(1.1) grayscale(0.9) opacity(0.8);
 }
 
 .raceSelect:hover {

@@ -17,16 +17,16 @@
         <div class="p1Side">
             <div id="p1Info" class="hidden">
                 <div class="characterImg">
-                    <img src="assets/Human.gif" alt="Player1">
+                    <img id="p1Img" src="" alt="Player1">
                 </div>
                 <ul id="p1stats">
-                    <li id="p1Name">Nick</li>
+                    <li id="p1Name">Player 1 Name</li>
                     <li id="p1Health"><span id="p1CurHP">100</span><span id="p1MaxHP">/100 HP</span></li>
-                    <li id="p1Item">Shovel</li>
+                    <li id="p1Item">Selected item</li>
                 </ul>
             </div>
-            <div>
-                <form id="p1Sheet" action="#" onsubmit="createP1()"  method="GET">
+            <div id="p1Sheet">
+                <form action="#" onsubmit="createP1()"  method="GET">
                     <fieldset>
                         <legend>Player1 creation</legend>
                         <div>
@@ -65,16 +65,16 @@
         <div class="p2Side">
             <div id="p2Info" class="hidden">
                 <div class="characterImg">
-                    <img src="assets/Vampire-male.gif" alt="Player2">
+                    <img id="p2Img" src="" alt="Player2">
                 </div>
                 <ul id="p2stats">
-                    <li id="p2Name">Selene</li>
-                    <li id="p2Health"><span id="p1CurHP">80</span><span id="p1MaxHP">/80 HP</span></li>
-                    <li id="p2Item">Boots</li>
+                    <li id="p2Name">Player 2 Name</li>
+                    <li id="p2Health"><span id="p2CurHP">80</span><span id="p2MaxHP">/80 HP</span></li>
+                    <li id="p2Item">Selected item</li>
                 </ul>
             </div>
-            <div>
-                <form id="p2Sheet" onsubmit="createP2()" method="GET">
+            <div id="p2Sheet">
+                <form onsubmit="createP2()" method="GET">
                     <fieldset>
                         <legend>Player2 creation</legend>
                         <div>
@@ -110,7 +110,7 @@
         </div>
     </div>
 
-    <div id="actionBtns" class="hidden">
+    <div id="movesPanel" class="hidden">
         <div class="p1btns">
             <button id="p1Att">Attack</button>
             <button id="p1Heal">Heal</button>

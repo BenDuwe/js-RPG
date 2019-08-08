@@ -7,6 +7,10 @@ createPtwo.addEventListener("click", createP2);
 
 let player1;
 let player2;
+let p1info = document.getElementById("p1Info");
+let p2info = document.getElementById("p2Info");
+let p1sheet = document.getElementById("p1Sheet");
+let p2sheet = document.getElementById("p2Sheet");
 
 
 function createP1(){
@@ -23,7 +27,21 @@ function createP1(){
         }
     }
     player1 = new Person(p1Name,p1Race,p1Item);
-    
+    document.getElementById("p1Name").innerHTML = `Name: ${player1.name}`;
+    document.getElementById("p1CurHP").innerHTML = `Health: ${player1.currenthealth}`;
+    document.getElementById("p1MaxHP").innerHTML = `/${player1.maxHealth} HP`;
+    document.getElementById("p1Item").innerHTML = `Item: ${player1.item}`;
+    document.getElementById("p1Img").src = `assets/${player1.race}.gif`;
+    p1info.classList.toggle("hidden");
+    p1sheet.classList.toggle("hidden");
+    if (p1sheet.classList.contains("hidden") && p2sheet.classList.contains("hidden")){
+        document.getElementById("movesPanel").classList.toggle("hidden");
+        document.getElementById("movesPanel").classList.toggle("actionBtns");
+        document.getElementById("battlelog").classList.toggle("hidden");
+        document.getElementById("battlelog").classList.toggle("battlelog");
+
+    }
+   
     event.preventDefault();
 };
 
@@ -41,6 +59,20 @@ function createP2(){
         }
     }
     player2 = new Person(p2Name,p2Race,p2Item);
+    document.getElementById("p2Name").innerHTML = `Name: ${player2.name}`;
+    document.getElementById("p2CurHP").innerHTML = `Health: ${player2.currenthealth}`;
+    document.getElementById("p2MaxHP").innerHTML = `/${player2.maxHealth} HP`;
+    document.getElementById("p2Item").innerHTML = `Item: ${player2.item}`;
+    document.getElementById("p2Img").src = `assets/${player2.race}.gif`;
+    p2info.classList.toggle("hidden");
+    p2sheet.classList.toggle("hidden");
+    if (p1sheet.classList.contains("hidden") && p2sheet.classList.contains("hidden")){
+        document.getElementById("movesPanel").classList.toggle("hidden");
+        document.getElementById("movesPanel").classList.toggle("actionBtns");
+        document.getElementById("battlelog").classList.toggle("hidden");
+        document.getElementById("battlelog").classList.toggle("battlelog");
+
+    }
 
     
     event.preventDefault();
