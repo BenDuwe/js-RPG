@@ -20,7 +20,13 @@ export default function Person(name, race, item, quirck, skill){
         }
     };
 
-    this.damage = function(){};
+    this.damage = function(){
+        if (this.item == "Sword") {
+            return (Math.floor(Math.random() * (this.maxDamage-this.min+1)) + this.min)*(1+this.skill);
+        } else {
+            return Math.floor(Math.random() * (this.maxDamage-this.min+1)) + this.min;
+         }
+    };
 
     this.totalDamage = this.damage();
 

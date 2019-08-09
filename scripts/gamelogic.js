@@ -30,58 +30,62 @@ function createP1() {
             let id = p1RaceInputs[i].id;
             p1Race = document.getElementById(id).value;
         }};
-    switch (p1Race) {
-        case "Human":
-            p1Quirck = 0.2;
-            break;
-        case "Orc":
-            p1Quirck = 0.4;
-            break;
-        case "Elf":
-            p1Quirck = 0.3;
-            break;
-        case "Vampire":
-            p1Quirck = 0.1;
-    };
-    switch (p1Item) {
-        case "Boots":
-            p1Skill = 0.3;
-            break;
-        case "Staff":
-            p1Skill = 0.2;
-            break;
-        case "Sword":
-            p1Skill = 0.3;
-            break;
-        case "Bow":
-            p1Skill = 0.3;
-    };
-    player1 = new Person(p1Name, p1Race, p1Item, p1Quirck, p1Skill, );
-    if (p1Race == "Orc") {
-        player1.maxHealth = player1.maxHealth * (1 + p1Quirck);
-        player1.currenthealth = player1.currenthealth * (1 + p1Quirck);
-        document.getElementById("p1Healthbar").max = player1.maxHealth;
-        document.getElementById("p1Healthbar").value = player1.currenthealth;
+    if (p1Name === "" || p1Item === "" ||  p1Race === undefined){
+        alert("Player1: please make sure the creation sheet is completely filled in.")
     } else {
-        document.getElementById("p1Healthbar").max = player1.maxHealth;
-        document.getElementById("p1Healthbar").value = player1.currenthealth;
-    };
-    document.getElementById("p1Name").innerHTML = `Name: ${player1.name}`;
-    document.getElementById("p1CurHP").innerHTML = `Health: ${player1.currenthealth}`;
-    document.getElementById("p1MaxHP").innerHTML = `/${player1.maxHealth} HP`;
-    document.getElementById("p1Item").innerHTML = `Item: ${player1.item}`;
-    document.getElementById("p1Img").src = `assets/${player1.race}.gif`;
+        switch (p1Race) {
+            case "Human":
+                p1Quirck = 0.2;
+                break;
+            case "Orc":
+                p1Quirck = 0.4;
+                break;
+            case "Elf":
+                p1Quirck = 0.3;
+                break;
+            case "Vampire":
+                p1Quirck = 0.1;
+        };
+        switch (p1Item) {
+            case "Boots":
+                p1Skill = 0.3;
+                break;
+            case "Staff":
+                p1Skill = 0.2;
+                break;
+            case "Sword":
+                p1Skill = 0.3;
+                break;
+            case "Bow":
+                p1Skill = 0.3;
+        };
+        player1 = new Person(p1Name, p1Race, p1Item, p1Quirck, p1Skill, );
+        if (p1Race == "Orc") {
+            player1.maxHealth = player1.maxHealth * (1 + p1Quirck);
+            player1.currenthealth = player1.currenthealth * (1 + p1Quirck);
+            document.getElementById("p1Healthbar").max = player1.maxHealth;
+            document.getElementById("p1Healthbar").value = player1.currenthealth;
+        } else {
+            document.getElementById("p1Healthbar").max = player1.maxHealth;
+            document.getElementById("p1Healthbar").value = player1.currenthealth;
+        };
+        document.getElementById("p1Name").innerHTML = `Name: ${player1.name}`;
+        document.getElementById("p1CurHP").innerHTML = `Health: ${player1.currenthealth}`;
+        document.getElementById("p1MaxHP").innerHTML = `/${player1.maxHealth} HP`;
+        document.getElementById("p1Item").innerHTML = `Item: ${player1.item}`;
+        document.getElementById("p1Img").src = `assets/${player1.race}.gif`;
 
-    p1info.classList.toggle("hidden");
-    p1sheet.classList.toggle("hidden");
-    if (p1sheet.classList.contains("hidden") && p2sheet.classList.contains("hidden")) {
-        document.getElementById("movesPanel").classList.toggle("hidden");
-        document.getElementById("movesPanel").classList.toggle("actionBtns");
-        document.getElementById("battlelog").classList.toggle("hidden");
-        document.getElementById("battlelog").classList.toggle("battlelog");
-    };
-    console.log(player1);
-    event.preventDefault();
+        p1info.classList.toggle("hidden");
+        p1sheet.classList.toggle("hidden");
+        if (p1sheet.classList.contains("hidden") && p2sheet.classList.contains("hidden")) {
+            document.getElementById("movesPanel").classList.toggle("hidden");
+            document.getElementById("movesPanel").classList.toggle("actionBtns");
+            document.getElementById("battlelog").classList.toggle("hidden");
+            document.getElementById("battlelog").classList.toggle("battlelog");
+        };
+        console.log(player1);
+        event.preventDefault();
+    }
 };
 
 function createP2() {
@@ -96,58 +100,62 @@ function createP2() {
             let id = p2RaceInputs[i].id;
             p2Race = document.getElementById(id).value;
         }};
-    switch (p2Race) {
-        case "Human":
-            p2Quirck = 0.2;
-            break;
-        case "Orc":
-            p2Quirck = 0.4;
-            break;
-        case "Elf":
-            p2Quirck = 0.3;
-            break;
-        case "Vampire":
-            p2Quirck = 0.1;
-    };
-    switch (p2Item) {
-        case "Boots":
-            p2Skill = 0.3;
-            break;
-        case "Staff":
-            p2Skill = 0.2;
-            break;
-        case "Sword":
-            p2Skill = 0.3;
-            break;
-        case "Bow":
-            p2Skill = 0.3;
-    };
-    player2 = new Person(p2Name, p2Race, p2Item, p2Quirck, p2Skill);
-    if (p2Race == "Orc") {
-        player2.maxHealth = player2.maxHealth * (1 + p2Quirck);
-        player2.currenthealth = player2.currenthealth * (1 + p2Quirck);
-        document.getElementById("p2Healthbar").max = player2.maxHealth;
-        document.getElementById("p2Healthbar").value = player2.currenthealth;
-    } else {
-        document.getElementById("p2Healthbar").max = player2.maxHealth;
-        document.getElementById("p2Healthbar").value = player2.currenthealth;
-    };
+    if (p2Name === "" || p2Item === "" ||  p2Race === undefined){
+        alert("Player2: please make sure the creation sheet is completely filled in.")
+    } else {    
+        switch (p2Race) {
+            case "Human":
+                p2Quirck = 0.2;
+                break;
+            case "Orc":
+                p2Quirck = 0.4;
+                break;
+            case "Elf":
+                p2Quirck = 0.3;
+                break;
+            case "Vampire":
+                p2Quirck = 0.1;
+        };
+        switch (p2Item) {
+            case "Boots":
+                p2Skill = 0.3;
+                break;
+            case "Staff":
+                p2Skill = 0.2;
+                break;
+            case "Sword":
+                p2Skill = 0.3;
+                break;
+            case "Bow":
+                p2Skill = 0.3;
+        };
+        player2 = new Person(p2Name, p2Race, p2Item, p2Quirck, p2Skill);
+        if (p2Race == "Orc") {
+            player2.maxHealth = player2.maxHealth * (1 + p2Quirck);
+            player2.currenthealth = player2.currenthealth * (1 + p2Quirck);
+            document.getElementById("p2Healthbar").max = player2.maxHealth;
+            document.getElementById("p2Healthbar").value = player2.currenthealth;
+        } else {
+            document.getElementById("p2Healthbar").max = player2.maxHealth;
+            document.getElementById("p2Healthbar").value = player2.currenthealth;
+        };
 
-    document.getElementById("p2Name").innerHTML = `Name: ${player2.name}`;
-    document.getElementById("p2CurHP").innerHTML = `Health: ${player2.currenthealth}`;
-    document.getElementById("p2MaxHP").innerHTML = `/${player2.maxHealth} HP`;
-    document.getElementById("p2Item").innerHTML = `Item: ${player2.item}`;
-    document.getElementById("p2Img").src = `assets/${player2.race}.gif`;
-    p2info.classList.toggle("hidden");
-    p2sheet.classList.toggle("hidden");
-    if (p1sheet.classList.contains("hidden") && p2sheet.classList.contains("hidden")) {
-        document.getElementById("movesPanel").classList.toggle("hidden");
-        document.getElementById("movesPanel").classList.toggle("actionBtns");
-        document.getElementById("battlelog").classList.toggle("hidden");
-        document.getElementById("battlelog").classList.toggle("battlelog");
-    };
-    console.log(player2);
-    event.preventDefault();
+        document.getElementById("p2Name").innerHTML = `Name: ${player2.name}`;
+        document.getElementById("p2CurHP").innerHTML = `Health: ${player2.currenthealth}`;
+        document.getElementById("p2MaxHP").innerHTML = `/${player2.maxHealth} HP`;
+        document.getElementById("p2Item").innerHTML = `Item: ${player2.item}`;
+        document.getElementById("p2Img").src = `assets/${player2.race}.gif`;
+        p2info.classList.toggle("hidden");
+        p2sheet.classList.toggle("hidden");
+        if (p1sheet.classList.contains("hidden") && p2sheet.classList.contains("hidden")) {
+            document.getElementById("movesPanel").classList.toggle("hidden");
+            document.getElementById("movesPanel").classList.toggle("actionBtns");
+            document.getElementById("battlelog").classList.toggle("hidden");
+            document.getElementById("battlelog").classList.toggle("battlelog");
+        };
+        console.log(player2);
+        event.preventDefault();
+    }
 };
 
 // Healing:
@@ -165,7 +173,7 @@ function healingp1() {
     document.getElementById("p1CurHP").innerHTML = `Health: ${player1.currenthealth}`;
     document.getElementById("p1Healthbar").value = player1.currenthealth;
     } else {
-        alert(`Your health is at full ${player1.name}`);
+        alert(`Your health is full ${player1.name}`);
     }
 };
 function healingp2() {
@@ -177,6 +185,27 @@ function healingp2() {
     document.getElementById("p2CurHP").innerHTML = `Health: ${player2.currenthealth}`;
     document.getElementById("p2Healthbar").value = player2.currenthealth;
     } else {
-        alert(`Your health is at full ${player2.name}`);
+        alert(`Your health is full ${player2.name}`);
     }
+};
+
+
+// Attacking:
+
+document.getElementById("p1Att").addEventListener("click", attackp1);
+document.getElementById("p2Att").addEventListener("click", attackp2);
+
+function attackp1() {
+    if (player1.item === "Bow") {
+        let x = Math.random();
+        if (x < 0,3) {
+
+        } else {
+            
+        }
+    }
+};
+
+function attackp2() {
+    
 };

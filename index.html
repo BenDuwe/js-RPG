@@ -11,7 +11,7 @@
 
 <body>
     <div></div>
-    <h1>Game</h1>
+    <h1>TABS II</h1>
 
     <div id="VS" class="VS">
         <div class="p1Side">
@@ -36,7 +36,7 @@
                         </div>
                         <div>
                             <label for="itemP1">Item:</label>
-                            <select name="item_player_1" id="itemP1" aria-placeholder="Choose an item" required>
+                            <select name="item_player_1" id="itemP1" required>
                                 <option class="itemP1choice" value="" selected disabled hidden>Choose here</option>
                                 <option class="itemP1choice" value="Boots">Boots</option>
                                 <option class="itemP1choice" value="Staff">Staff</option>
@@ -44,7 +44,8 @@
                                 <option class="itemP1choice" value="Bow">Bow</option>
                             </select>
                         </div>
-                        <div id="raceP1" class="race_selector"><div class="raceLabel">Choose your race:</div>
+                        <div id="raceP1" class="race_selector">
+                            <div class="raceLabel">Choose your race:</div>
                             <input type="radio" id="humanP1" name="P1race" value="Human" required/>
                             <label for="humanP1" class="raceSelect selectHuman rP1"></label>
                             <input type="radio" id="orcP1" name="P1race" value="Orc"/>
@@ -62,7 +63,9 @@
                 </form>
             </div>
         </div>
-        <H2 class="versus">VS</H2>
+        <div class="versus">
+            <img class="VSimg" src="assets/Versus.png" alt="VS">
+        </div>
         <div class="p2Side">
             <div id="p2Info" class="hidden">
                 <div class="characterImg">
@@ -93,7 +96,8 @@
                                 <option class="itemP2choice" value="Bow">Bow</option>
                             </select>
                         </div>
-                        <div id="raceP2" class="race_selector"><div class="raceLabel">Choose your race:</div>
+                        <div id="raceP2" class="race_selector">
+                            <div class="raceLabel">Choose your race:</div>
                             <input type="radio" id="humanP2" name="P2race" value="Human" required/>
                             <label for="humanP2" class="raceSelect selectHuman rP2"></label>
                             <input type="radio" id="orcP2" name="P2race" value="Orc"/>
