@@ -196,16 +196,32 @@ document.getElementById("p1Att").addEventListener("click", attackp1);
 document.getElementById("p2Att").addEventListener("click", attackp2);
 
 function attackp1() {
-    if (player1.item === "Bow") {
-        let x = Math.random();
-        if (x < 0,3) {
-
+    if (player1.item === "Bow" && Math.random() < 0.3){
+        player2.totalDamage = player1.damage()
+        player2.currenthealth -= player2.totalDamage;
+        console.log(player2.totalDamage+"dealt to player2")
+        document.getElementById("p2CurHP").innerHTML = `Health: ${player2.currenthealth}`;
+        document.getElementById("p2Healthbar").value = player2.currenthealth;
+    
+        player2.totalDamage = player1.damage()
+        player2.currenthealth -= player2.totalDamage;
+        console.log(player2.totalDamage+"dealt to player2")
+        document.getElementById("p2CurHP").innerHTML = `Health: ${player2.currenthealth}`;
+        document.getElementById("p2Healthbar").value = player2.currenthealth;
+    
         } else {
-            
-        }
+        player2.totalDamage = player1.damage()
+        player2.currenthealth -= player2.totalDamage;
+        console.log(player2.totalDamage+"dealt to player2")
+        document.getElementById("p2CurHP").innerHTML = `Health: ${player2.currenthealth}`;
+        document.getElementById("p2Healthbar").value = player2.currenthealth;
+    
     }
 };
 
 function attackp2() {
-    
+    for (let i = 0 ; i < 50 ; i++){
+        player1.totalDamage = player2.damage()
+        console.log(player1.totalDamage+"dealt to player1")
+    }    
 };
