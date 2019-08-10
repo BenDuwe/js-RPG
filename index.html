@@ -16,15 +16,15 @@
     <div id="VS" class="VS">
         <div class="p1Side">
             <div id="p1Info" class="hidden">
-                <div class="characterImg">
-                    <img id="p1Img" src="" alt="Player1">
-                    <progress id="p1Healthbar" value="100" max="100"></progress>
+                <div id="p1stats">
+                    <div id="p1Name">Player 1 Name</div>
+                    <div id="p1Item">Selected item</div>
+                    <div id="p1Health"><span id="p1CurHP">100</span><span id="p1MaxHP">/100 HP</span></div>
                 </div>
-                <ul id="p1stats">
-                    <li id="p1Name">Player 1 Name</li>
-                    <li id="p1Health"><span id="p1CurHP">100</span><span id="p1MaxHP">/100 HP</span></li>
-                    <li id="p1Item">Selected item</li>
-                </ul>
+                <div class="characterImg">
+                    <progress id="p1Healthbar" value="100" max="100"></progress>
+                    <img id="p1Img" src="" alt="Player1">
+                </div>
             </div>
             <div id="p1Sheet">
                 <form action="#" onsubmit="createP1()"  method="GET">
@@ -68,15 +68,15 @@
         </div>
         <div class="p2Side">
             <div id="p2Info" class="hidden">
-                <div class="characterImg">
-                    <img id="p2Img" src="" alt="Player2">
-                    <progress id="p2Healthbar" value="100" max="100"></progress>
+                <div id="p2stats">
+                    <div id="p2Name">Player 2 Name</div>
+                    <div id="p2Item">Selected item</div>
+                    <div id="p2Health"><span id="p2CurHP">80</span><span id="p2MaxHP">/80 HP</span></div>
                 </div>
-                <ul id="p2stats">
-                    <li id="p2Name">Player 2 Name</li>
-                    <li id="p2Health"><span id="p2CurHP">80</span><span id="p2MaxHP">/80 HP</span></li>
-                    <li id="p2Item">Selected item</li>
-                </ul>
+                <div class="characterImg">
+                    <progress id="p2Healthbar" value="100" max="100"></progress>
+                    <img id="p2Img" src="" alt="Player2">
+                </div>
             </div>
             <div id="p2Sheet">
                 <form onsubmit="createP2()" method="GET">
@@ -88,7 +88,7 @@
                         </div>
                         <div>
                             <label for="itemP2">Item:</label>
-                            <select name="item_player_2" id="itemP2" aria-placeholder="Choose an item" title="Please choose an item" required>
+                            <select name="item_player_2" id="itemP2" title="Please choose an item" required>
                                 <option class="itemP2choice" value="" selected disabled hidden>Choose here</option>
                                 <option class="itemP2choice" value="Staff">Staff</option>
                                 <option class="itemP2choice" value="Boots">Boots</option>

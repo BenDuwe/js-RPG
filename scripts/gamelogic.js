@@ -29,8 +29,9 @@ function createP1() {
         if (p1RaceInputs[i].checked) {
             let id = p1RaceInputs[i].id;
             p1Race = document.getElementById(id).value;
-        }};
-    if (p1Name === "" || p1Item === "" ||  p1Race === undefined){
+        }
+    };
+    if (p1Name === "" || p1Item === "" || p1Race === undefined) {
         alert("Player1: please make sure the creation sheet is completely filled in.")
     } else {
         switch (p1Race) {
@@ -99,10 +100,11 @@ function createP2() {
         if (p2RaceInputs[i].checked) {
             let id = p2RaceInputs[i].id;
             p2Race = document.getElementById(id).value;
-        }};
-    if (p2Name === "" || p2Item === "" ||  p2Race === undefined){
+        }
+    };
+    if (p2Name === "" || p2Item === "" || p2Race === undefined) {
         alert("Player2: please make sure the creation sheet is completely filled in.")
-    } else {    
+    } else {
         switch (p2Race) {
             case "Human":
                 p2Quirck = 0.2;
@@ -159,69 +161,162 @@ function createP2() {
 };
 
 // Healing:
+let healer;
 
-document.getElementById("p1Heal").addEventListener("click", healingp1);
-document.getElementById("p2Heal").addEventListener("click", healingp2);
+document.getElementById("p1Heal").addEventListener("click", heal);
+document.getElementById("p2Heal").addEventListener("click", heal);
 
-
-function healingp1() {
-    if (player1.currenthealth < player1.maxHealth){
-    player1.currenthealth += player1.heal();
-    if (player1.currenthealth > player1.maxHealth){
-        player1.currenthealth = player1.maxHealth;
-    }; 
-    document.getElementById("p1CurHP").innerHTML = `Health: ${player1.currenthealth}`;
-    document.getElementById("p1Healthbar").value = player1.currenthealth;
+function heal(){
+    healer = event.target.id;
+    if (healer === "p1Heal"){
+        healing(player1)
     } else {
-        alert(`Your health is full ${player1.name}`);
-    }
-};
-function healingp2() {
-    if (player2.currenthealth < player2.maxHealth){
-    player2.currenthealth += player2.heal();
-    if (player2.currenthealth > player2.maxHealth){
-        player2.currenthealth = player2.maxHealth;
-    }; 
-    document.getElementById("p2CurHP").innerHTML = `Health: ${player2.currenthealth}`;
-    document.getElementById("p2Healthbar").value = player2.currenthealth;
-    } else {
-        alert(`Your health is full ${player2.name}`);
+        healing(player2)
     }
 };
 
-
-// Attacking:
-
-document.getElementById("p1Att").addEventListener("click", attackp1);
-document.getElementById("p2Att").addEventListener("click", attackp2);
-
-function attackp1() {
-    if (player1.item === "Bow" && Math.random() < 0.3){
-        player2.totalDamage = player1.damage()
-        player2.currenthealth -= player2.totalDamage;
-        console.log(player2.totalDamage+"dealt to player2")
-        document.getElementById("p2CurHP").innerHTML = `Health: ${player2.currenthealth}`;
-        document.getElementById("p2Healthbar").value = player2.currenthealth;
-    
-        player2.totalDamage = player1.damage()
-        player2.currenthealth -= player2.totalDamage;
-        console.log(player2.totalDamage+"dealt to player2")
-        document.getElementById("p2CurHP").innerHTML = `Health: ${player2.currenthealth}`;
-        document.getElementById("p2Healthbar").value = player2.currenthealth;
-    
+function healing(player) {
+    if (player.currenthealth < player.maxHealth) {
+        player.currenthealth += player.heal();
+        if (player.currenthealth > player.maxHealth) {
+            player.currenthealth = player.maxHealth;
+        };
+        if (healer === "p1Heal"){
+            document.getElementById("p1CurHP").innerHTML = `Health: ${player.currenthealth}`;
+            document.getElementById("p1Healthbar").value = player.currenthealth;
         } else {
-        player2.totalDamage = player1.damage()
-        player2.currenthealth -= player2.totalDamage;
-        console.log(player2.totalDamage+"dealt to player2")
-        document.getElementById("p2CurHP").innerHTML = `Health: ${player2.currenthealth}`;
-        document.getElementById("p2Healthbar").value = player2.currenthealth;
-    
+            document.getElementById("p2CurHP").innerHTML = `Health: ${player.currenthealth}`;
+            document.getElementById("p2Healthbar").value = player.currenthealth;
+        }
+    } else {
+        alert(`Your health is full ${player.name}`);
     }
 };
 
-function attackp2() {
-    for (let i = 0 ; i < 50 ; i++){
-        player1.totalDamage = player2.damage()
-        console.log(player1.totalDamage+"dealt to player1")
-    }    
+// function healingp2() {
+//     if (player2.currenthealth < player2.maxHealth) {
+//         player2.currenthealth += player2.heal();
+//         if (player2.currenthealth > player2.maxHealth) {
+//             player2.currenthealth = player2.maxHealth;
+//         };
+//         document.getElementById("p2CurHP").innerHTML = `Health: ${player2.currenthealth}`;
+//         document.getElementById("p2Healthbar").value = player2.currenthealth;
+//     } else {
+//         alert(`Your health is full ${player2.name}`);
+//     }
+// };
+
+
+// Attacking with integrated bow check (sword check is build into object.damage):
+
+document.getElementById("p1Att").addEventListener("click", attack);
+document.getElementById("p2Att").addEventListener("click", attack);
+
+let clickedBtn;
+
+function attack(){
+    clickedBtn = event.target.id;
+    if (clickedBtn === "p1Att"){
+        bowCheck(player2,player1);
+    } else {
+        bowCheck(player1,player2);
+    }
 };
+
+// Checking for bow:
+
+function bowCheck(defender,attacker) {
+    if (attacker.item === "Bow" && Math.random() < 0.3) {
+        console.log(attacker.name + " 's bow double attack activated")
+        for (let x = 0; x < 2; x++) {
+            bootsCheck(defender, attacker);
+        }
+    } else {
+        bootsCheck(defender, attacker);
+    }
+};
+
+// Checking for Boots:
+
+function bootsCheck(defender, attacker) {
+    if (defender.item === "Boots") {
+        let dodge = Math.random()
+        console.log(dodge);
+        if (dodge < eval(1 - defender.skill)) {
+            raceCheck(defender,attacker);
+        } else {
+            console.log(defender.name + " dodged " + attacker.name + "'s attack")
+        }
+    } else {
+        raceCheck(defender,attacker);
+    }
+}
+
+// Checking for race quircks:
+
+function raceCheck(defender, attacker) {
+    if (defender.race === "Human") {
+        defender.totalDamage = eval(attacker.damage() * (1 - defender.quirck));
+        defender.currenthealth -= defender.totalDamage;
+        if (defender.currenthealth < 0) {
+            defender.currenthealth = 0;
+        };
+        console.log(attacker.name + " dealt " + defender.totalDamage + " damage to " + defender.name + ".")
+        if (clickedBtn === "p2Att") {
+            document.getElementById("p1CurHP").innerHTML = `Health: ${defender.currenthealth}`;
+            document.getElementById("p1Healthbar").value = defender.currenthealth;
+        } else {
+            document.getElementById("p2CurHP").innerHTML = `Health: ${defender.currenthealth}`;
+            document.getElementById("p2Healthbar").value = defender.currenthealth;
+        };
+
+    } else if (defender.race === "Elf") {
+        let reflect = Math.random()
+        let reflectedAmount = 0.5;
+        console.log(reflect);
+        if (reflect < eval(1 - defender.skill)) {
+            defender.totalDamage = attacker.damage();
+            defender.currenthealth -= defender.totalDamage;
+            if (defender.currenthealth < 0) {
+                defender.currenthealth = 0;   
+            };
+            console.log(attacker.name + " dealt " + defender.totalDamage + " damage to " + defender.name + ".")
+            if (clickedBtn === "p2Att") {
+                document.getElementById("p1CurHP").innerHTML = `Health: ${defender.currenthealth}`;
+                document.getElementById("p1Healthbar").value = defender.currenthealth;
+            } else {
+                document.getElementById("p2CurHP").innerHTML = `Health: ${defender.currenthealth}`;
+                document.getElementById("p2Healthbar").value = defender.currenthealth;
+            };
+        } else {
+            console.log(defender.name + " parried " + attacker.name + "'s attack!")
+            defender.totalDamage = eval(attacker.damage() * (reflectedAmount));
+            attacker.currenthealth -= defender.totalDamage;
+            if (attacker.currenthealth < 0) {
+                attacker.currenthealth = 0;
+            };    
+            console.log(defender.totalDamage + " damage was reflected back to " + attacker.name + ".")
+            if (clickedBtn === "p1Att") {
+                document.getElementById("p1CurHP").innerHTML = `Health: ${defender.currenthealth}`;
+                document.getElementById("p1Healthbar").value = defender.currenthealth;
+            } else {
+                document.getElementById("p2CurHP").innerHTML = `Health: ${player2.currenthealth}`;
+                document.getElementById("p2Healthbar").value = player2.currenthealth;
+            };
+        };
+    } else {
+        defender.totalDamage = attacker.damage();
+        defender.currenthealth -= defender.totalDamage;
+        if (defender.currenthealth < 0) {
+            defender.currenthealth = 0;
+        };
+        console.log(attacker.name + " dealt " + defender.totalDamage + " damage to " + defender.name + ".")
+        if (clickedBtn === "p2Att") {
+            document.getElementById("p1CurHP").innerHTML = `Health: ${defender.currenthealth}`;
+            document.getElementById("p1Healthbar").value = defender.currenthealth;
+        } else {
+            document.getElementById("p2CurHP").innerHTML = `Health: ${defender.currenthealth}`;
+            document.getElementById("p2Healthbar").value = defender.currenthealth;
+        };
+    };
+}

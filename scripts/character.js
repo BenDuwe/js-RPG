@@ -26,7 +26,6 @@ export default function Person(name, race, item, quirck, skill){
         } else {
             return Math.floor(Math.random() * (this.maxDamage-this.min+1)) + this.min;
         }
-        console.log(this.totalDamage);
     };
 
     this.totalDamage = "";
