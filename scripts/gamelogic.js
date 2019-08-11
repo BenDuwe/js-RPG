@@ -193,20 +193,6 @@ function healing(player) {
     }
 };
 
-// function healingp2() {
-//     if (player2.currenthealth < player2.maxHealth) {
-//         player2.currenthealth += player2.heal();
-//         if (player2.currenthealth > player2.maxHealth) {
-//             player2.currenthealth = player2.maxHealth;
-//         };
-//         document.getElementById("p2CurHP").innerHTML = `Health: ${player2.currenthealth}`;
-//         document.getElementById("p2Healthbar").value = player2.currenthealth;
-//     } else {
-//         alert(`Your health is full ${player2.name}`);
-//     }
-// };
-
-
 // Attacking with integrated bow check (sword check is build into object.damage):
 
 document.getElementById("p1Att").addEventListener("click", attack);
