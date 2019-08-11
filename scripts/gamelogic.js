@@ -1,4 +1,4 @@
-import Person from '/scripts/character.js';
+import Person from './character.js';
 
 let createPone = document.getElementById("p1create");
 createPone.addEventListener("click", createP1);
