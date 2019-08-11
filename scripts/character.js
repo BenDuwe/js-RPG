@@ -12,19 +12,27 @@ export default function Person(name, race, item, quirck, skill){
     this.maxDamage = 20;
     this.maxHealing = 30;
 
-    this.heal = function (){
-        if (this.item == "Staff") {
-        return (Math.floor(Math.random() * (this.maxHealing-this.min+1)) + this.min)*(1+this.skill);
+    this.heal = function (player){
+        if (player.item == "Staff") {
+            let min = Math.ceil(player.min);
+            let max = Math.floor(player.maxHealing);
+            return Math.round(((Math.floor(Math.random() * (max-min+1)) + min)*(1+player.skill))*10)/10;
         } else {
-           return Math.floor(Math.random() * (this.maxHealing-this.min+1)) + this.min;
+            let min = Math.ceil(player.min);
+            let max = Math.floor(player.maxHealing);
+            return Math.round((Math.floor(Math.random() * (max-min+1)) + min)*10)/10;
         }
     };
 
     this.damage = function(){
         if (this.item == "Sword") {
-            return (Math.floor(Math.random() * (this.maxDamage-this.min+1)) + this.min)*(1+this.skill);
+            let min = Math.ceil(this.min);
+            let max = Math.floor(this.maxDamage);
+            return Math.round(((Math.floor(Math.random() * (max-min+1)) + min)*(1+this.skill))*10)/10;
         } else {
-            return Math.floor(Math.random() * (this.maxDamage-this.min+1)) + this.min;
+            let min = Math.ceil(this.min);
+            let max = Math.floor(this.maxDamage);
+            return Math.round((Math.floor(Math.random() * (max-min+1)) + min)*10)/10;
         }
     };
 

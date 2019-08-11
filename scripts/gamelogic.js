@@ -17,6 +17,8 @@ let p2sheet = document.getElementById("p2Sheet");
 let p2Quirck;
 let p2Skill;
 
+let clickedBtn;
+
 
 function createP1() {
     let p1Name = document.getElementById("nameP1").value;
@@ -161,14 +163,13 @@ function createP2() {
 };
 
 // Healing:
-let healer;
 
 document.getElementById("p1Heal").addEventListener("click", heal);
 document.getElementById("p2Heal").addEventListener("click", heal);
 
 function heal(){
-    healer = event.target.id;
-    if (healer === "p1Heal"){
+    clickedBtn = event.target.id;
+    if (clickedBtn === "p1Heal"){
         healing(player1)
     } else {
         healing(player2)
@@ -176,12 +177,14 @@ function heal(){
 };
 
 function healing(player) {
+    let healAmount = player.heal(player)
+    console.log(healAmount);
     if (player.currenthealth < player.maxHealth) {
-        player.currenthealth += player.heal();
+        player.currenthealth += healAmount;
         if (player.currenthealth > player.maxHealth) {
             player.currenthealth = player.maxHealth;
         };
-        if (healer === "p1Heal"){
+        if (clickedBtn === "p1Heal"){
             document.getElementById("p1CurHP").innerHTML = `Health: ${player.currenthealth}`;
             document.getElementById("p1Healthbar").value = player.currenthealth;
         } else {
@@ -191,6 +194,8 @@ function healing(player) {
     } else {
         alert(`Your health is full ${player.name}`);
     }
+    healAmount = 0;
+    console.log(player.totalDamage)
 };
 
 // Attacking with integrated bow check (sword check is build into object.damage):
@@ -198,9 +203,11 @@ function healing(player) {
 document.getElementById("p1Att").addEventListener("click", attack);
 document.getElementById("p2Att").addEventListener("click", attack);
 
-let clickedBtn;
+
 
 function attack(){
+    player1.totalDamage = "";
+    player2.totalDamage = "";
     clickedBtn = event.target.id;
     if (clickedBtn === "p1Att"){
         bowCheck(player2,player1);
@@ -250,10 +257,10 @@ function raceCheck(defender, attacker) {
         console.log(attacker.name + " dealt " + defender.totalDamage + " damage to " + defender.name + ".")
         if (clickedBtn === "p2Att") {
             document.getElementById("p1CurHP").innerHTML = `Health: ${defender.currenthealth}`;
-            document.getElementById("p1Healthbar").value = defender.currenthealth;
+            document.getElementById("p1Healthbar").value = Math.round(defender.currenthealth*10)/10;
         } else {
             document.getElementById("p2CurHP").innerHTML = `Health: ${defender.currenthealth}`;
-            document.getElementById("p2Healthbar").value = defender.currenthealth;
+            document.getElementById("p2Healthbar").value = Math.round(defender.currenthealth*10)/10;
         };
 
     } else if (defender.race === "Elf") {
@@ -269,25 +276,25 @@ function raceCheck(defender, attacker) {
             console.log(attacker.name + " dealt " + defender.totalDamage + " damage to " + defender.name + ".")
             if (clickedBtn === "p2Att") {
                 document.getElementById("p1CurHP").innerHTML = `Health: ${defender.currenthealth}`;
-                document.getElementById("p1Healthbar").value = defender.currenthealth;
+                document.getElementById("p1Healthbar").value = Math.round(defender.currenthealth*10)/10;
             } else {
                 document.getElementById("p2CurHP").innerHTML = `Health: ${defender.currenthealth}`;
-                document.getElementById("p2Healthbar").value = defender.currenthealth;
+                document.getElementById("p2Healthbar").value = Math.round(defender.currenthealth*10)/10;
             };
         } else {
             console.log(defender.name + " parried " + attacker.name + "'s attack!")
-            defender.totalDamage = eval(attacker.damage() * (reflectedAmount));
-            attacker.currenthealth -= defender.totalDamage;
+            attacker.totalDamage = eval(attacker.damage() * (reflectedAmount));
+            attacker.currenthealth -= attacker.totalDamage;
             if (attacker.currenthealth < 0) {
                 attacker.currenthealth = 0;
             };    
-            console.log(defender.totalDamage + " damage was reflected back to " + attacker.name + ".")
+            console.log(attacker.totalDamage + " damage was reflected back to " + attacker.name + ".")
             if (clickedBtn === "p1Att") {
-                document.getElementById("p1CurHP").innerHTML = `Health: ${defender.currenthealth}`;
-                document.getElementById("p1Healthbar").value = defender.currenthealth;
+                document.getElementById("p1CurHP").innerHTML = `Health: ${attacker.currenthealth}`;
+                document.getElementById("p1Healthbar").value = Math.round(attacker.currenthealth*10)/10;
             } else {
-                document.getElementById("p2CurHP").innerHTML = `Health: ${player2.currenthealth}`;
-                document.getElementById("p2Healthbar").value = player2.currenthealth;
+                document.getElementById("p2CurHP").innerHTML = `Health: ${defender.currenthealth}`;
+                document.getElementById("p2Healthbar").value = defender.currenthealth;
             };
         };
     } else {
@@ -299,10 +306,14 @@ function raceCheck(defender, attacker) {
         console.log(attacker.name + " dealt " + defender.totalDamage + " damage to " + defender.name + ".")
         if (clickedBtn === "p2Att") {
             document.getElementById("p1CurHP").innerHTML = `Health: ${defender.currenthealth}`;
-            document.getElementById("p1Healthbar").value = defender.currenthealth;
+            document.getElementById("p1Healthbar").value = Math.round(defender.currenthealth*10)/10;
         } else {
             document.getElementById("p2CurHP").innerHTML = `Health: ${defender.currenthealth}`;
-            document.getElementById("p2Healthbar").value = defender.currenthealth;
+            document.getElementById("p2Healthbar").value = Math.round(defender.currenthealth*10)/10;
         };
     };
-}
+};
+
+
+
+//  Switching player turns:
