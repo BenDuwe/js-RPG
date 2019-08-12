@@ -5,7 +5,7 @@ export default function Person(name, race, item, quirck, skill){
     this.quirck = quirck;
     this.item = item;
     this.skill = skill;
-    this.currenthealth = 50;
+    this.currenthealth = 100;
     this.maxHealth = 100;
     
     this.min = 3;
