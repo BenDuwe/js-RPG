@@ -5,6 +5,11 @@ createPone.addEventListener("click", createP1);
 let createPtwo = document.getElementById("p2create");
 createPtwo.addEventListener("click", createP2);
 
+let log = document.getElementById("battlelog");
+let logdiv = document.createElement("div");
+let linebreak = document.createElement("br");
+
+
 let player1;
 let p1info = document.getElementById("p1Info");
 let p1sheet = document.getElementById("p1Sheet");
@@ -183,6 +188,11 @@ function healing(player) {
     console.log(healAmount);
     if (player.currenthealth < player.maxHealth) {
         player.currenthealth += healAmount;
+        log.innerHTML += "</br>" + `${player.name} heals for ${healAmount}`;
+        // log.appendChild(logdiv);
+        // log.appendChild(linebreak);
+        log.scrollTop = log.scrollHeight;
+        log.scrollTop = log.scrollHeight;
         if (player.currenthealth > player.maxHealth) {
             player.currenthealth = player.maxHealth;
         };
@@ -221,6 +231,10 @@ function attack(){
 
 function bowCheck(defender,attacker) {
     if (attacker.item === "Bow" && Math.random() < 0.3) {
+        log.innerHTML += "</br>" + `${attacker.name}'s bow double attack activated.`;
+        // log.appendChild(logdiv);
+        // log.appendChild(linebreak);
+        log.scrollTop = log.scrollHeight;
         console.log(attacker.name + " 's bow double attack activated")
         for (let x = 0; x < 2; x++) {
             bootsCheck(defender, attacker);
@@ -239,6 +253,10 @@ function bootsCheck(defender, attacker) {
         if (dodge < eval(1 - defender.skill)) {
             raceCheck(defender,attacker);
         } else {
+            log.innerHTML += "</br>" + `${defender.name} dodged ${attacker.name}'s attack`;
+            // log.appendChild(logdiv);
+            // log.appendChild(linebreak);
+            log.scrollTop = log.scrollHeight;
             console.log(defender.name + " dodged " + attacker.name + "'s attack")
             switchPlayer();
         }
@@ -253,6 +271,10 @@ function raceCheck(defender, attacker) {
     if (defender.race === "Human") {
         defender.totalDamage = eval(attacker.damage() * (1 - defender.quirck));
         defender.currenthealth -= defender.totalDamage;
+        log.innerHTML += "</br>" + `${attacker.name} dealt ${defender.totalDamage} damage to ${defender.name}.`;
+        // log.appendChild(logdiv);
+        // log.appendChild(linebreak);
+        log.scrollTop = log.scrollHeight;
         console.log(attacker.name + " dealt " + defender.totalDamage + " damage to " + defender.name + ".")
         if (defender.currenthealth < 0) {
             defender.currenthealth = 0;
@@ -273,6 +295,10 @@ function raceCheck(defender, attacker) {
         if (reflect < eval(1 - defender.skill)) {
             defender.totalDamage = attacker.damage();
             defender.currenthealth -= defender.totalDamage;
+            log.innerHTML += "</br>" + `${attacker.name} dealt ${defender.totalDamage} damage to ${defender.name}.`;
+            // log.appendChild(logdiv);
+            // log.appendChild(linebreak);
+            log.scrollTop = log.scrollHeight;
             console.log(attacker.name + " dealt " + defender.totalDamage + " damage to " + defender.name + ".")
             if (defender.currenthealth < 0) {
                 defender.currenthealth = 0; 
@@ -286,9 +312,17 @@ function raceCheck(defender, attacker) {
                 document.getElementById("p2Healthbar").value = Math.round(defender.currenthealth*10)/10;
             };
         } else {
+            log.innerHTML += "</br>" + `${defender.name} parried ${attacker.name}'s attack!`;
+            // log.appendChild(logdiv);
+            // log.appendChild(linebreak);
+            log.scrollTop = log.scrollHeight;  
             console.log(defender.name + " parried " + attacker.name + "'s attack!")
             attacker.totalDamage = eval(attacker.damage() * (reflectedAmount));
             attacker.currenthealth -= attacker.totalDamage;
+            log.innerHTML += "</br>" + `${attacker.totalDamage} damage was reflected back to ${attacker.name}.`;
+            // log.appendChild(logdiv);
+            // log.appendChild(linebreak);  
+            log.scrollTop = log.scrollHeight;
             console.log(attacker.totalDamage + " damage was reflected back to " + attacker.name + ".")
             if (attacker.currenthealth < 0) {
                 attacker.currenthealth = 0;
@@ -305,6 +339,10 @@ function raceCheck(defender, attacker) {
     } else {
         defender.totalDamage = attacker.damage();
         defender.currenthealth -= defender.totalDamage;
+        log.innerHTML += "</br>" + `${attacker.name} dealt ${defender.totalDamage} damage to ${defender.name}.`;
+        // log.appendChild(logdiv);
+        // log.appendChild(linebreak);
+        log.scrollTop = log.scrollHeight;   
         console.log(attacker.name + " dealt " + defender.totalDamage + " damage to " + defender.name + ".")
         if (defender.currenthealth < 0) {
             defender.currenthealth = 0;
@@ -329,11 +367,18 @@ function raceCheck(defender, attacker) {
 function startingPlayer(){
     let toss = Math.floor(Math.random() * 2);
     if (toss == 0){
+        log.innerHTML += "</br>" + `Player1 starts!`;
+        // log.appendChild(logdiv);
+        // log.appendChild(linebreak);   
         console.log("Player1 starts");
         document.getElementById("p2Att").disabled = true;
         document.getElementById("p2Heal").disabled = true;
         document.getElementById("p2Yield").disabled = true;
     } else if (toss == 1){
+        log.innerHTML += "</br>" + `Player2 starts!`;
+        // log.appendChild(logdiv);
+        // log.appendChild(linebreak);
+        log.scrollTop = log.scrollHeight;   
         console.log("Player2 starts");
         document.getElementById("p1Att").disabled = true;
         document.getElementById("p1Heal").disabled = true;
@@ -358,6 +403,10 @@ function switchPlayer(){
                 player2.currenthealth = player2.maxHealth;
             }
             player1.currenthealth -= stolen;
+            log.innerHTML += "</br>" + `${player2.name} stole ${stolen} health from ${player1.name}.`;
+            // log.appendChild(logdiv);
+            // log.appendChild(linebreak); 
+            log.scrollTop = log.scrollHeight;  
             console.log(`${player2.name} stole ${stolen} health from ${player1.name}.`)
             document.getElementById("p1CurHP").innerHTML = `Health: ${Math.round(player1.currenthealth*10)/10}`;
             document.getElementById("p1Healthbar").value = Math.round(player1.currenthealth*10)/10;
@@ -378,6 +427,10 @@ function switchPlayer(){
                 player1.currenthealth = player1.maxHealth;
             }
             player2.currenthealth -= stolen;
+            log.innerHTML += "</br>" + `${player1.name} stole ${stolen} health from ${player2.name}.`;
+            // log.appendChild(logdiv);
+            // log.appendChild(linebreak);   
+            log.scrollTop = log.scrollHeight;
             console.log(`${player1.name} stole ${stolen} health from ${player2.name}.`)
             document.getElementById("p1CurHP").innerHTML = `Health: ${Math.round(player1.currenthealth*10)/10}`;
             document.getElementById("p1Healthbar").value = Math.round(player1.currenthealth*10)/10;
@@ -393,10 +446,18 @@ function defeat(player){
     if (player === player1){
         player.currenthealth = 0;
         document.getElementById("p1Img").src = `assets/grave-left.png`;
+        log.innerHTML += "</br>" + `Player2 wins!`;
+        // log.appendChild(logdiv);
+        // log.appendChild(linebreak); 
+        log.scrollTop = log.scrollHeight;  
         console.log("Player2 wins!");
     } else if (player === player2){
         player.currenthealth = 0;
         document.getElementById("p2Img").src = `assets/grave-right.png`;
+        log.innerHTML += "</br>" + `Player1 wins!`;
+        // log.appendChild(logdiv);
+        // log.appendChild(linebreak); 
+        log.scrollTop = log.scrollHeight;  
         console.log("Player1 wins!");
     }
     document.getElementById("movesPanel").classList.toggle("hidden");
