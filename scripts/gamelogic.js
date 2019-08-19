@@ -259,6 +259,7 @@ function bootsCheck(defender, attacker) {
             log.scrollTop = log.scrollHeight;
             console.log(defender.name + " dodged " + attacker.name + "'s attack")
             switchPlayer();
+            // bug with Vampire stealing life twice
         }
     } else {
         raceCheck(defender,attacker);
@@ -332,8 +333,8 @@ function raceCheck(defender, attacker) {
                 document.getElementById("p1CurHP").innerHTML = `Health: ${attacker.currenthealth}`;
                 document.getElementById("p1Healthbar").value = Math.round(attacker.currenthealth*10)/10;
             } else {
-                document.getElementById("p2CurHP").innerHTML = `Health: ${defender.currenthealth}`;
-                document.getElementById("p2Healthbar").value = defender.currenthealth;
+                document.getElementById("p2CurHP").innerHTML = `Health: ${attacker.currenthealth}`;
+                document.getElementById("p2Healthbar").value = attacker.currenthealth;
             };
         };
     } else {
